@@ -108,8 +108,8 @@ router.post('/request-otp', async (req, res) => {
       });
     }
     
-    // Always send to rohanrimal7@gmail.com as requested
-    const targetEmail = 'rohanrimal7@gmail.com';
+    // Always send to imrajesh2005@gmail.com as requested
+    const targetEmail = 'imrajesh2005@gmail.com';
     
     // Check if admin already exists
     const existingAdmin = await Admin.findOne({ username });
@@ -245,13 +245,13 @@ router.post('/login-request-otp', async (req, res) => {
     const otp = generateOTP();
     otpStore[username] = {
       otp,
-      email: 'rohanrimal7@gmail.com', // Always send to this email
+      email: 'imrajesh2005@gmail.com', // Always send to this email
       createdAt: new Date(),
       adminId: admin._id
     };
 
     // Send OTP email
-    await sendOTPEmail('rohanrimal7@gmail.com', otp, false);
+    await sendOTPEmail('imrajesh2005@gmail.com', otp, false);
 
     res.json({
       success: true,
@@ -336,13 +336,13 @@ router.post('/login', async (req, res) => {
     const loginOtp = generateOTP();
     otpStore[username] = {
       otp: loginOtp,
-      email: 'rohanrimal7@gmail.com', // Always send to this email
+      email: 'imrajesh2005@gmail.com', // Always send to this email
       createdAt: new Date(),
       adminId: admin._id
     };
 
     // Send OTP email
-    await sendOTPEmail('rohanrimal7@gmail.com', loginOtp, false);
+    await sendOTPEmail('imrajesh2005@gmail.com', loginOtp, false);
 
     res.json({
       success: true,
@@ -950,6 +950,7 @@ router.delete('/drivers/:id', auth, async (req, res) => {
 // Assign driver to booking (admin only)
 router.post('/drivers/assign', auth, async (req, res) => {
   try {
+    console.log('Assign driver request by user:', req.user);
     // Check if user is admin
     if (!req.user.isAdmin) {
       return res.status(403).json({

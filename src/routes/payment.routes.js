@@ -139,7 +139,7 @@ router.post('/khalti/initiate', auth, async (req, res) => {
     
     
     // Use provided return URL or fallback to the frontend URL
-    const finalReturnUrl = returnUrl || `http://localhost:5173/user/payment-confirmation`;
+    const finalReturnUrl = returnUrl || `https://car-rental-frontend-green.vercel.app`;
     
     // Create a descriptive name for the booking
     const purchaseOrderName = `Car Rental: ${booking.car?.name || 'Vehicle'} (${booking._id})`;

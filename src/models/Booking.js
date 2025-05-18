@@ -100,7 +100,7 @@ const bookingSchema = new mongoose.Schema({
   },
   paymentStatus: {
     type: String,
-    enum: ['pending', 'completed', 'failed'],
+    enum: ['pending', 'initiated', 'completed', 'failed'],
     default: 'pending'
   },
   khaltiPidx: {
